@@ -33,8 +33,8 @@ if __name__ == "__main__":
   current_row = 0
   current_datetime = datetime.datetime.now(timezone('US/Eastern'))
   current_month = current_datetime.strftime("%m")
-  current_day = current_datetime.strftime("%d")
-  current_hour = int(current_datetime.strftime("%H"))
+  current_day = '18'#current_datetime.strftime("%d")
+  current_hour = 19#int(current_datetime.strftime("%H"))
   current_minute = int(current_datetime.strftime("%M"))
 
   valid_matches = np.empty((0,6))
@@ -73,6 +73,7 @@ if __name__ == "__main__":
   if valid_matches.shape[0] > 1:
     for i in range(0, valid_matches.shape[0]):
       prompt_string += f"\n{i+1}: {valid_matches[i][2]} vs {valid_matches[i][3]}"
+    print(prompt_string)
     chosen_match = int(input())-1
 
   with open("extra.txt", "w") as f:
