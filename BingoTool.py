@@ -33,8 +33,8 @@ if __name__ == "__main__":
   current_row = 0
   current_datetime = datetime.datetime.now(timezone('US/Eastern'))
   current_month = current_datetime.strftime("%m")
-  current_day = '18'#current_datetime.strftime("%d")
-  current_hour = 19#int(current_datetime.strftime("%H"))
+  current_day = current_datetime.strftime("%d")
+  current_hour = int(current_datetime.strftime("%H"))
   current_minute = int(current_datetime.strftime("%M"))
 
   valid_matches = np.empty((0,6))
