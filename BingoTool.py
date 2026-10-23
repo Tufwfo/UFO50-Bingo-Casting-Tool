@@ -92,11 +92,15 @@ if __name__ == "__main__":
   right_pronoun = ""
   right_score = ""
   values = get_values("Stats")
+  print(values, valid_matches)
   for i in range(0, values.shape[0]):
-    if values[i][0] == valid_matches[chosen_match][2]:
+    stats_name = values[i][0].upper()
+    left_match_name = valid_matches[chosen_match][2].upper()
+    right_match_name = valid_matches[chosen_match][3].upper()
+    if stats_name == left_match_name:
       left_pronoun = values[i][3]
       left_score = f"{values[i][1]}-{values[i][2]}"
-    if values[i][0] == valid_matches[chosen_match][3]:
+    if stats_name == right_match_name:
       right_pronoun = values[i][3]
       right_score = f"{values[i][1]}-{values[i][2]}"
 
