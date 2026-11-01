@@ -47,17 +47,14 @@ if __name__ == "__main__":
     if am_or_pm == "pm":
       hour += 12
 
-    print(date[0], current_month, date[1], current_day)
     if date[0] == current_month and date[1] == current_day:
-      print(valid_matches.size, valid_matches)
       if valid_matches.size == 0:
-        print(hour, current_hour)
         if hour > current_hour:
           valid_matches = np.vstack([values[current_row], valid_matches])
         elif hour == current_hour and minute > current_minute:
           valid_matches = np.vstack([values[current_row], valid_matches])
       else:
-        match_hour = int(valid_matches[0][4].split(":")[0])
+        match_hour = int(valid_matches[0][4].split(":")[0])%12
         match_am_or_pm = values[current_row][4].split(" ")[1]
         if match_am_or_pm == "pm":
           match_hour += 12
