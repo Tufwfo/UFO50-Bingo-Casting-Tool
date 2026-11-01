@@ -31,8 +31,8 @@ if __name__ == "__main__":
   searching = True
   current_row = 0
   current_datetime = datetime.datetime.now(timezone('US/Eastern'))
-  current_month = current_datetime.strftime("%m")
-  current_day = current_datetime.strftime("%d")
+  current_month = current_datetime.strftime("%m").lstrip('0')
+  current_day = current_datetime.strftime("%d").lstrip('0')
   current_hour = int(current_datetime.strftime("%H"))
   current_minute = int(current_datetime.strftime("%M"))
 
@@ -46,9 +46,12 @@ if __name__ == "__main__":
     am_or_pm = values[current_row][4].split(" ")[1]
     if am_or_pm == "pm":
       hour += 12
-    
+
+    print(date[0], current_month, date[1], current_day)
     if date[0] == current_month and date[1] == current_day:
+      print(valid_matches.size, valid_matches)
       if valid_matches.size == 0:
+        print(hour, current_hour)
         if hour > current_hour:
           valid_matches = np.vstack([values[current_row], valid_matches])
         elif hour == current_hour and minute > current_minute:
