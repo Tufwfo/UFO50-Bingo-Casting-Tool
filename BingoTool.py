@@ -1,4 +1,3 @@
-import google.auth
 import os.path
 import datetime
 import numpy as np
@@ -42,11 +41,12 @@ if __name__ == "__main__":
     values = get_values("Matches")
     date = values[current_row][5].split("/")
     hour = int(values[current_row][4].split(":")[0])
+    print(hour)
     minute = values[current_row][4].split(":")[1]
     minute = int(minute.split(" ")[0])
     am_or_pm = values[current_row][4].split(" ")[1]
     if am_or_pm == "pm":
-      hour += 12
+      hour = (hour + 12) % 24
     
     if date[0] == current_month and date[1] == current_day:
       if valid_matches.size == 0:
