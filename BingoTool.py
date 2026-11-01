@@ -40,13 +40,12 @@ if __name__ == "__main__":
   while searching:
     values = get_values("Matches")
     date = values[current_row][5].split("/")
-    hour = int(values[current_row][4].split(":")[0])
-    print(hour)
+    hour = int(values[current_row][4].split(":")[0])%12
     minute = values[current_row][4].split(":")[1]
     minute = int(minute.split(" ")[0])
     am_or_pm = values[current_row][4].split(" ")[1]
     if am_or_pm == "pm":
-      hour = (hour + 12) % 24
+      hour += 12
     
     if date[0] == current_month and date[1] == current_day:
       if valid_matches.size == 0:
@@ -92,7 +91,6 @@ if __name__ == "__main__":
   right_pronoun = ""
   right_score = ""
   values = get_values("Stats")
-  print(values, valid_matches)
   for i in range(0, values.shape[0]):
     stats_name = values[i][0].upper()
     left_match_name = valid_matches[chosen_match][2].upper()
